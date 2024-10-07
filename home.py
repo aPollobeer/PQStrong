@@ -7,6 +7,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
+import numpy as np
 
 
 def get_file_list(suffix,path):
@@ -84,6 +85,9 @@ if file:
             trace1 = go.Bar(x=column0_list, y=column1_list, name='需验收总额（元）')
             fig = go.Figure(data=[trace1], layout={"template": "plotly_dark"})
             st.plotly_chart(fig, theme='streamlit')
+    if char_type == '气泡图':
+        chart_data = pd.DataFrame([[4,4,4],[3,3,3],[2,2,2]],columns=['张三','李四','王五'])
+        st.scatter_chart(chart_data,x_label="日期",y_label="可用人天")
 
 
 else:
